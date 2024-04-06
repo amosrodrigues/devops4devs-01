@@ -20,11 +20,11 @@ jobs:
         uses: docker/build-push-action@v5.3.0
         with:
           context: ./src
-          file: src/Dockerfile
+          file: ./src/Dockerfile
           push: true
           tags: |
             amosrodrigues/devops4devs-news:latest
-            amosrodrigues/devops4devs-news:${{github.run_number}}           
+            amosrodrigues/devops4devs-news:${{github.run_number}}
   CD:
     needs: [CI]
     runs-on: ubuntu-latest
@@ -35,8 +35,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: "us-east-1"
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_ACCESS_SECRET }}
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
+          aws-secret-access-key: ${{secrets.AWS_ACCESS_SECRET}}
       - name: Configuração do Kubeconfig
         run: aws eks update-kubeconfig --name devops4devs-eks --region us-east-1
       - name: Atualização do Manifesto
@@ -50,4 +50,4 @@ jobs:
           manifests: |
             ./k8s/deploy.yaml
           images: |
-            amosrodrigues/devops4devs-news:${{github.run_number}} 
+            amosrodrigues/devops4devs-news:${{github.run_number}}
