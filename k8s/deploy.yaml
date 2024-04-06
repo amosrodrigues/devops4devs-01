@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: amosrodrigues/devops4devs-news:v4
+          image: amosrodrigues/devops4devs-news:v1
           ports:
             - containerPort: 8080
           env:
