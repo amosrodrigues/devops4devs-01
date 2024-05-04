@@ -1,0 +1,5 @@
+{
+  "yaml.schemas": {
+    "https://json.schemastore.org/yamllint.json": "file:///home/amos/www/devops4devs-01/k8s/deploy.yaml"
+  }
+}
